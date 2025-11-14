@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Mate - Inventory</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header-blue">
+        <div class="container">
+            
+            <nav class="navbar">
+                <img src="checkmate-logo.png" alt="Checkmate Logo" class="logo-img">
+
+                <div class="nav-icons">
+                    <div class="notification-menu-container">
+                        <button class="nav-icon-btn" id="notif-btn">
+                            <i class="fas fa-bell notif-animate"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+
+                        <div class="notification-dropdown" id="notif-dropdown">
+                            <p class="notif-title" id="notif-title">Expiry Alerts</p>
+
+                            <div class="notif-item">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span id="notif-1">3 Milks expiring in 1 week</span>
+                            </div>
+
+                            <div class="notif-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="notif-2">2 Breads expiring in 2 days</span>
+                            </div>
+
+                            <div class="notif-item">
+                                <i class="fas fa-hourglass-end"></i>
+                                <span id="notif-3">1 Ice Cream expires today</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-menu-container">
+                        <button class="nav-icon-btn" id="profile-btn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        
+                        <div class="profile-dropdown" id="profile-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-language"></i>
+                                <span>Multilingual Support</span>
+                            </a>
+                            
+                            <select id="langSwitcher" class="dropdown-item" style="width:100%; padding:6px; border-radius:6px; margin-top:5px;">
+                                <option value="en">English</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                            </select>
+
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span id="login-text">Signin / Login</span>
+                            </a>                      
+                            <a href="billing.html" class="dropdown-item" >
+                                <i class="fas fa-cogs"></i>
+                                <span>Billing</span>
+                            </a>
+                            <a href="index.html" class="dropdown-item" >
+                                <i class="fas fa-hourglass-end"></i>
+                                <span>Home</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hero-grid">
+                
+                <div class="hero-text">
+                    <h2 id="hero-title">Smart Inventory For Every Shopkeeper</h2>
+                    <p id="hero-desc">Manage your products effortlessly—whether it's fashion, grocery, or essentials.</p>
+                    <button class="btn btn-orange" id="get-started-btn">Get Started</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-row">
+                        <span id="total-items-label">Total Items:</span>
+                        <span class="dashboard-value">10</span>
+                    </div>
+                    
+                    <hr class="divider">
+                    
+                    <div class="dashboard-row">
+                        <span id="active-alerts-label">Active Alerts:</span>
+                        <span class="dashboard-value">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="inventory-header">
+            <h2 id="inventory-title">Your Inventory</h2>
+            <button class="btn btn-blue">
+                <i class="fas fa-plus mr-2"></i>
+                <span id="add-item-btn">Add Items</span>
+            </button>
+        </div>
+
+        <div class="inventory-grid">
+            
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://placehold.co/300x300/FFE4C4/F56513?text=Fresh+Malta" alt="Fresh Indian Malta">
+                </div>
+                <div class="product-info">
+                    <h3 id="product-1-name">Fresh Indian Malta</h3>
+                    <p class="stock-text" id="stock-label">Current Stock: <span>5</span></p>
+                    <div class="product-buttons">
+                        <button class="btn btn-card-add" id="add-btn">Add +</button>
+                        <button class="btn btn-card-delete" id="delete-btn">Delete -</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card placeholder-card">
+                <i class="fas fa-box-open"></i>
+                <p id="placeholder-text">Your other items will appear here</p>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        const langData = {
+            en: {
+                logo:"CHECKMATE - Logo",
+                notifTitle:"Expiry Alerts",
+                notif1:"3 Milks expiring in 1 week",
+                notif2:"2 Breads expiring in 2 days",
+                notif3:"1 Ice Cream expires today",
+                login:"Signin / Login",
+                heroTitle:"Smart Inventory For Every Shopkeeper",
+                heroDesc:"Manage your products effortlessly—whether it's fashion, grocery, or essentials.",
+                getStarted:"Get Started",
+                totalItems:"Total Items:",
+                activeAlerts:"Active Alerts:",
+                inventoryTitle:"Your Inventory",
+                addItem:"Add Items",
+                productName:"Fresh Indian Malta",
+                currentStock:"Current Stock:",
+                placeholder:"Your other items will appear here",
+                micStatus:"Click to start listening...",
+                micListening: "Listening... Click to stop",
+                micProcessing: "Processing...",
+                addBtn:"Add +",
+                deleteBtn:"Delete -"
+            },
+            hi: {
+                logo:"चेकमेट - लोगो",
+                notifTitle:"समाप्ति अलर्ट",
+                notif1:"3 दूध 1 हफ्ते में खत्म हो रहे हैं",
+                notif2:"2 ब्रेड 2 दिनों में खत्म हो रही हैं",
+                notif3:"1 आइसक्रीम आज खत्म हो रही है",
+                login:"साइन इन / लॉगिन",
+                heroTitle:"हर दुकानदार के लिए स्मार्ट इन्वेंटरी",
+                heroDesc:"अपने उत्पाद आसानी से प्रबंधित करें—फैशन हो, किराना या आवश्यकताएँ।",
+                getStarted:"शुरू करें",
+                totalItems:"कुल आइटम:",
+                activeAlerts:"सक्रिय अलर्ट:",
+                inventoryTitle:"आपकी इन्वेंटरी",
+                addItem:"आइटम जोड़ें",
+                productName:"ताज़ा इंडियन माल्टा",
+                currentStock:"वर्तमान स्टॉक:",
+                placeholder:"आपकी अन्य वस्तुएं यहाँ दिखाई देंगी",
+                micStatus:"सुनना शुरू करने के लिए क्लिक करें...",
+                micListening: "सुन रहा हूँ... रोकने के लिए क्लिक करें",
+                micProcessing: "प्रोसेस हो रहा है...",
+                addBtn:"जोड़ें +",
+                deleteBtn:"हटाएं -"
+            },
+            ta: {
+                // ... (Tamil translations) ...
+                micStatus:"கேட்கத் தொடங்க கிளிக் செய்யவும்...",
+                micListening: "கேட்கிறது... நிறுத்த கிளிக் செய்யவும்",
+                micProcessing: "செயலாக்குகிறது...",
+            },
+            bn: {
+                // ... (Bengali translations) ...
+                micStatus:"শোনা শুরু করতে ক্লিক করুন...",
+                micListening: "শুনছি... থামাতে ক্লিক করুন",
+                micProcessing: "প্রসেসিং...",
+            }
+            // Ensure micListening and micProcessing are added for all languages
+        };
+
+        // --- SCRIPT LOGIC (RUNS WHEN PAGE IS LOADED) ---
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. DROPDOWN LOGIC ---
+            // (This logic remains unchanged)
+            const notifBtn = document.getElementById('notif-btn');
+            const notifDropdown = document.getElementById('notif-dropdown');
+            const profileBtn = document.getElementById('profile-btn');
+            const profileDropdown = document.getElementById('profile-dropdown');
+
+            if (notifBtn) {
+                notifBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    notifDropdown.style.display = notifDropdown.style.display === 'block' ? 'none' : 'block';
+                    profileDropdown.style.display = 'none'; 
+                });
+            }
+            if (profileBtn) {
+                profileBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+                    notifDropdown.style.display = 'none'; 
+                });
+            }
+            window.addEventListener('click', (e) => {
+                if (notifDropdown && !notifBtn.contains(e.target) && !notifDropdown.contains(e.target)) {
+                    notifDropdown.style.display = 'none';
+                }
+                if (profileDropdown && !profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.style.display = 'none';
+                }
+            });
+
+            // --- 3. MULTILINGUAL LOGIC ---
+            // (This logic remains largely unchanged, just add new keys)
+            const applyTranslations = (lang) => {
+                const translations = langData[lang];
+                document.documentElement.lang = lang; 
+
+                const setText = (id, key) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = translations[key];
+                };
+
+                // Apply all translations
+                setText('notif-title', 'notifTitle');
+                setText('notif-1', 'notif1');
+                setText('notif-2', 'notif2');
+                setText('notif-3', 'notif3');
+                setText('login-text', 'login');
+                setText('hero-title', 'heroTitle');
+                setText('hero-desc', 'heroDesc');
+                setText('get-started-btn', 'getStarted');
+                setText('total-items-label', 'totalItems');
+                setText('active-alerts-label', 'activeAlerts');
+                setText('inventory-title', 'inventoryTitle');
+                setText('add-item-btn', 'addItem');
+                setText('product-1-name', 'productName');
+                setText('placeholder-text', 'placeholder');
+                setText('status-text', 'micStatus'); // Default mic status
+                setText('add-btn', 'addBtn');
+                setText('delete-btn', 'deleteBtn');
+
+                const stockLabel = document.getElementById('stock-label');
+                if (stockLabel && stockLabel.firstChild) {
+                    stockLabel.firstChild.nodeValue = translations.currentStock + ' ';
+                }
+            };
+
+            langSwitcher.addEventListener('change', (e) => {
+                const newLang = e.target.value;
+                localStorage.setItem('preferredLang', newLang); 
+                applyTranslations(newLang);
+                if (recognition && !isListening) {
+                    // Update recognition language for next time
+                    recognition.lang = getLangCode();
+                }
+            });
+
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            langSwitcher.value = savedLang;
+            applyTranslations(savedLang); 
+
+        }); // END of DOMContentLoaded
+
+
+        // --- 4. NEW: BACKEND & SPEECH FUNCTIONS ---
+        // These are moved from index.html and placed outside DOMContentLoaded
+
+        /**
+         * Sends the recognized text to the backend.
+         * MODIFIED to handle structured responses for UI updates.
+         */
+        async function sendVoiceCommandToBackend(text) {
+            const statusText = document.getElementById('status-text');
+            try {
+                const response = await fetch('http://127.0.0.1:8000/process-voice-command', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text }),
+                });
+                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const data = await response.json(); // e.g., { action: 'update', ... }
+                
+                // *** CRITICAL INTEGRATION POINT ***
+                // Check the 'action' from the backend to update the UI
+                if (data.action === 'update') {
+                    updateInventoryUI(data.item, data.quantity);
+                } else if (data.action === 'add') {
+                    addInventoryUI(data.item, data.quantity);
+                } else if (data.action === 'delete') {
+                    // You would create a deleteInventoryUI function
+                }
+                
+                // Speak the confirmation response from the backend
+                speak(data.response);
+                statusText.textContent = `Check Mate: "${data.response}"`;
+
+            } catch (error) {
+                console.error("Error sending to backend:", error);
+                const errorMsg = "Error: Could not connect to backend.";
+                statusText.textContent = errorMsg;
+                speak(errorMsg);
+            }
+        }
+
+        /**
+         * Browser "Mouth" (Speech Synthesis)
+         * MODIFIED to use the selected language.
+         */
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Get current language from switcher
+            const lang = document.getElementById('langSwitcher').value;
+            if (lang === 'hi') utterance.lang = 'hi-IN';
+            else if (lang === 'ta') utterance.lang = 'ta-IN';
+            else if (lang === 'bn') utterance.lang = 'bn-IN';
+            else utterance.lang = 'en-US';
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        // --- 5. NEW: UI UPDATE FUNCTIONS ---
+        // These functions are called by sendVoiceCommandToBackend
+
+        /**
+         * Finds an item in the UI and updates its stock count.
+         */
+        function updateInventoryUI(itemName, newQuantity) {
+            const productCards = document.querySelectorAll('.product-card');
+            let found = false;
+            productCards.forEach(card => {
+                const nameEl = card.querySelector('h3');
+                // Simple search, you can make this more robust
+                if (nameEl && nameEl.textContent.toLowerCase().includes(itemName.toLowerCase())) {
+                    const stockEl = card.querySelector('.stock-text span');
+                    if (stockEl) {
+                        stockEl.textContent = newQuantity;
+                        found = true;
+                    }
+                }
+            });
+
+            if (!found) {
+                console.warn(`Could not find item "${itemName}" in the UI to update.`);
+                // Optionally speak this error
+                // speak(`Sorry, I couldn't find ${itemName} to update.`);
+            }
+        }
+
+        /**
+         * Adds a new product card to the inventory grid.
+         */
+        function addInventoryUI(itemName, quantity) {
+            const inventoryGrid = document.querySelector('.inventory-grid');
+            const placeholder = document.querySelector('.placeholder-card');
+
+            // Capitalize item name for display
+            const displayName = itemName.charAt(0).toUpperCase() + itemName.slice(1);
+
+            const newCard = document.createElement('div');
+            newCard.className = 'product-card';
+            newCard.innerHTML = `
+                <div class="product-image-container">
+                    <img src="https://placehold.co/300x300/E0E0E0/333333?text=${encodeURIComponent(displayName)}" alt="${displayName}">
+                </div>
+                <div class="product-info">
+                    <h3>${displayName}</h3>
+                    <p class="stock-text">Current Stock: <span>${quantity}</span></p>
+                    <div class="product-buttons">
+                        <button class="btn btn-card-add">Add +</button>
+                        <button class="btn btn-card-delete">Delete -</button>
+                    </div>
+                </div>
+            `;
+            
+            // Insert the new card before the placeholder
+            if (placeholder) {
+                inventoryGrid.insertBefore(newCard, placeholder);
+            } else {
+                inventoryGrid.appendChild(newCard);
+            }
+        }
+    </script>
+
+</body>
+</html>

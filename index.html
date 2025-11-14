@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkmate: Smart Inventory for Shopkeepers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style-index.css">
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <div id="landing-page">
+        <header class="navbar">
+            <div class="logo">
+                <img src="checkmate-logo.png" alt="CheckMate-Logo" class="h-20 w-auto"> 
+            </div>
+            <nav class="nav-links">
+                <a href="inventory page.html">Dashboard</a> 
+                <a href="Feature.html">Features</a> <!-- Changed to #promo-section -->
+                <a href="#voice-app-link">Voice App</a> 
+                <a href="About.html">About</a> 
+            </nav>
+            <div class="hamburger" id="hamburger-btn">
+            <span></span><span></span><span></span>
+            </div>
+        </header>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#hero-section">Home</a>
+            <a href="Feature.html">Features</a> <!-- Changed to #promo-section -->
+            <a href="#voice-app-link">Voice App</a> 
+            <a href="inventory page.html">Dashboard</a> 
+        </div>
+
+        <section class="hero" id="hero-section">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1 class="text-gradient">Empowering Every Shopkeeper</h1>
+                <p class="tagline">Smart stock management made simple — for grocery, fashion, electronics & more.</p>
+                <button class="explore-btn" id="show-voice-app-btn">Launch Voice App</button>
+            </div>
+            <div class="slider-container">
+                <div class="slider-track" id="slider-track">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-basket-2.png" class="slide-img" alt="Grocery Basket">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/t-shirt.png" class="slide-img" alt="T-Shirt">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/smartphone-tablet.png" class="slide-img" alt="Electronics">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/book.png" class="slide-img" alt="Book">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/pill.png" class="slide-img" alt="Pharmacy">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/coffee-to-go.png" class="slide-img" alt="Cafe">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/flower.png" class="slide-img" alt="Flower Shop">
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section bg-gray-900 border-gray-700" id="promo-section">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">Write Customer Promos ✍</h2>
+                <p class="text-lg text-gray-300 mb-8">
+                    Generate professional and friendly messages for your customers. Perfect for SMS, WhatsApp, or social
+                    media.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="promo-input" class="block text-sm font-medium text-gray-300 mb-2">Promotion Idea:</label>
+                            <input type="text" id="promo-input" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., 20% off all bread">
+                        </div>
+                        <div>
+                            <label for="promo-tone" class="block text-sm font-medium text-gray-300 mb-2">Select Tone:</label>
+                            <select id="promo-tone" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="Friendly">Friendly & Casual</option>
+                                <option value="Urgent">Urgent (Flash Sale)</option>
+                                <option value="Professional">Professional</option>
+                                <option value="Excited">Excited</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="get-promo-btn" class="mt-4 w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z"></path></svg>
+                        <span>Write My Promo</span>
+                    </button>
+                </div>
+                <div id="promo-result-wrapper" class="mt-6 p-6 bg-gray-800 border border-gray-700 rounded-xl min-h-[150px] hidden">
+                    <div id="promo-result" class="text-white" style="white-space: pre-wrap;"></div>
+                    <button id="copy-promo-btn" class="mt-4 flex items-center justify-center gap-2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span>Copy Text</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center p-10 text-gray-500">
+            &copy; 2025 Checkmate. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- 
+      This is the Voice App "page" that shows up
+    -->
+    <section id="voice-app-section" style="display: none; background-image: url('https://i.pinimg.com/736x/e3/1e/ee/e31eeec2f1b7099001d780e80fe624b9.jpg');"> <!-- Added pink background -->
+        <h1 style="color: #333;">Check Mate Voice App ♟</h1>
+        <button id="recordButton" style="background-color: #007bff;">Hold to Talk</button>
+        <div id="status" style="color: #333;">Hold the button and speak your command.</div>
+        <button id="back-to-home-btn" class="mt-8 text-blue-500 hover:text-blue-700">← Back to Home</button>
+    </section>
+
+    
+    <script>
+        // --- PAGE 1: LANDING PAGE SCRIPTS ---
+        const landingPage = document.getElementById('landing-page');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Icon Slider Script
+        document.addEventListener("DOMContentLoaded", function () {
+            const track = document.getElementById('slider-track');
+            if (track) {
+                const slides = Array.from(track.children);
+                slides.forEach((slide) => {
+                    const clone = slide.cloneNode(true);
+                    track.appendChild(clone);
+                });
+            }
+        });
+
+        // Promo Writer Script
+        const getPromoBtn = document.getElementById('get-promo-btn');
+        const promoInput = document.getElementById('promo-input');
+        const promoTone = document.getElementById('promo-tone');
+        const promoResultWrapper = document.getElementById('promo-result-wrapper');
+        const promoResult = document.getElementById('promo-result');
+        const copyPromoBtn = document.getElementById('copy-promo-btn');
+
+        if(getPromoBtn) {
+            getPromoBtn.addEventListener('click', () => {
+                const promoIdea = promoInput.value;
+                const tone = promoTone.value;
+                if (!promoIdea.trim()) {
+                    promoResult.innerHTML = '<p class="text-red-400">Please enter your promotion idea first.</p>';
+                    promoResultWrapper.style.display = 'block';
+                    return;
+                }
+                const payload = { promoIdea: promoIdea, tone: tone };
+                callBackend('/get-promo', payload, getPromoBtn, promoResult, () => {
+                    promoResultWrapper.style.display = 'block';
+                });
+            });
+        }
+
+        // Reusable Backend API Function (for text features)
+        async function callBackend(endpoint, payload, button, resultElement, callback) {
+            const originalButtonText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<div class="spinner"></div><span>Thinking...</span>'; // You'll need CSS for .spinner
+            resultElement.innerHTML = '<p class="text-gray-400">Connecting to API...</p>';
+            if (callback) resultElement.parentElement.style.display = 'block';
+
+            const apiUrl = `http://127.0.0.1:8000${endpoint}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || `HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                resultElement.innerText = result.response ? result.response.trim() : 'Error: Empty response';
+                if (callback) callback();
+            } catch (error) {
+                console.error("API call failed:", error);
+                resultElement.innerHTML = `<p class="text-red-400">Error: Could not connect. Is 'uvicorn' running? (${error.message})</p>`;
+            }
+            button.disabled = false;
+            button.innerHTML = originalButtonText;
+        }
+
+        // Clipboard API for Promo
+        if(copyPromoBtn) {
+            copyPromoBtn.addEventListener('click', () => {
+                const textToCopy = promoResult.innerText;
+                // Using execCommand for broader compatibility in restricted environments
+                try {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+
+                    copyPromoBtn.innerHTML = '<span>✅ Copied!</span>';
+                    setTimeout(() => {
+                        copyPromoBtn.innerHTML = `
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copy Text</span>`;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    copyPromoBtn.innerHTML = '<span>❌ Failed</span>';
+                }
+            });
+        }
+
+
+        // --- PAGE 2: VOICE APP SCRIPTS ---
+        const voiceAppSection = document.getElementById('voice-app-section');
+        const recordButton = document.getElementById('recordButton');
+        const statusDiv = document.getElementById('status');
+        
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition;
+
+        if (SpeechRecognition) {
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                statusDiv.textContent = "Listening...";
+                recordButton.classList.add('is-listening');
+                recordButton.textContent = "Listening...";
+            };
+
+            // MODIFIED: This function now only handles the visual stop
+            recognition.onend = () => {
+                statusDiv.textContent = "Processing... Redirecting...";
+                recordButton.classList.remove('is-listening');
+                recordButton.textContent = "Hold to Talk";
+            };
+
+            // MODIFIED: This is where the magic happens
+            recognition.onresult = (event) => {
+                const spokenText = event.results[0][0].transcript;
+                statusDiv.textContent = `You said: "${spokenText}". Redirecting to dashboard...`;
+                
+                // 1. Save the command to localStorage
+                localStorage.setItem('pendingVoiceCommand', spokenText);
+                
+                // 2. Redirect to the inventory page
+                window.location.href = 'inventory.html'; 
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error", event.error);
+                statusDiv.textContent = "Error: " + event.error;
+            };
+
+        } else {
+            statusDiv.textContent = "Sorry, your browser doesn't support speech recognition.";
+            recordButton.disabled = true;
+        }
+
+        // Button events (unchanged)
+        recordButton.addEventListener('mousedown', () => {
+            if (recognition) { try { recognition.start(); } catch (e) {} }
+        });
+        recordButton.addEventListener('mouseup', () => {
+            if (recognition) { recognition.stop(); }
+        });
+
+        // REMOVED: The 'sendVoiceCommandToBackend' function is no longer needed in this file.
+
+        // Browser "Mouth" (Speech Synthesis) - Kept in case you want feedback here
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            speechSynthesis.speak(utterance);
+        }
+
+        // --- PAGE NAVIGATION SCRIPTS ---
+        const showVoiceAppBtn = document.getElementById('show-voice-app-btn');
+        const backToHomeBtn = document.getElementById('back-to-home-btn');
+        
+        // Find all links that point to the voice app
+        document.querySelectorAll('a[href="#voice-app-link"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                 e.preventDefault();
+                 showVoiceApp();
+            });
+        });
+
+        function showLandingPage() {
+            landingPage.style.display = 'block';
+            voiceAppSection.style.display = 'none';
+        }
+
+        function showVoiceApp() {
+            landingPage.style.display = 'none';
+            voiceAppSection.style.display = 'flex'; // Use flex to show it
+        }
+
+        // Event Listeners for navigation
+        showVoiceAppBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showVoiceApp();
+        });
+        
+        backToHomeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLandingPage();
+        });
+
+        // Also add to mobile menu link
+        document.querySelector('.mobile-menu a[href="#voice-app-link"]').addEventListener('click', (e) => {
+             e.preventDefault();
+             showVoiceApp();
+             // also close menu
+             hamburgerBtn.classList.remove('active');
+             mobileMenu.style.display = 'none';
+        });
+
+        // Make "Home" link work
+         document.querySelectorAll('a[href="#hero-section"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLandingPage();
+                closeMobileMenu();
+            });
+        });
+        
+        // Make "Features" link work
+        document.querySelectorAll('a[href="#promo-section"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLandingPage();
+                document.getElementById('promo-section').scrollIntoView({ behavior: 'smooth' });
+                closeMobileMenu();
+            });
+        });
+        
+        function closeMobileMenu() {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

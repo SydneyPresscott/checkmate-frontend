@@ -1,0 +1,405 @@
+
+        /* Base styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("shop.png");
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #f1f1f1;
+        }
+
+        /* Helper for gradient text */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #bbbbbb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            padding: 25px 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            size: 50px;
+        }
+
+        .nav-links {
+            display: none;
+            /* Hidden by default, shown on md+ */
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            color: #eee;
+            margin-left: 35px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Hamburger for mobile */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu (Hidden by default) */
+        .mobile-menu {
+            display: none;
+            /* Hidden by default */
+            position: absolute;
+            top: 80px;
+            /* Below navbar */
+            left: 0;
+            right: 0;
+            width: 90%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hamburger animation */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            /* Using your reference image */
+            background: url('https://images.unsplash.com/photo-1603291589332-9d10c85025a2?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            /* Centered */
+            align-items: center;
+            padding: 120px 80px;
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            /* Centered */
+        }
+
+        /* Gradient overlay for depth and text readability */
+        .overlay {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+
+        /* HERO TEXT */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            /* Increased max-width for centered layout */
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            /* Adjusted for responsiveness */
+            color: white;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 4.8rem;
+                line-height: 1.1;
+            }
+        }
+
+        .tagline {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #ced4da;
+            max-width: 500px;
+            /* Constrain tagline width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* BUTTON */
+        .explore-btn {
+            margin-top: 35px;
+            padding: 14px 34px;
+            border-radius: 40px;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            background: white;
+            color: #1a1f2e;
+            transition: 0.25s ease-in-out;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.07);
+        }
+
+
+        /* --- SLIDER STYLES --- */
+        .slider-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            /* Height of the slider area */
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            /* This is crucial, it clips the images */
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            z-index: 3;
+        }
+
+        .slider-track {
+            display: flex;
+            /* Lays out images in a row */
+            /* Image: 40px width + 50px margin = 90px per image.
+              We have 7 original images.
+              The JS doubles them, so total images = 14.
+            */
+            width: calc((40px + 50px) * 14);
+            /* (Image width + margin) * (Total images) */
+            animation: scroll 25s linear infinite;
+        }
+
+        .slide-img {
+            height: 40px;
+            width: 40px;
+            margin: 0 25px;
+            /* (25px left + 25px right = 50px total horizontal margin) */
+            filter: grayscale(1) brightness(1.5);
+            /* Makes icons white/gray */
+            opacity: 0.6;
+        }
+
+        /* The scrolling animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                /* Moves the track to the left by the width of the *original* 7 images */
+                transform: translateX(calc((40px + 50px) * -7));
+            }
+        }
+
+        /* Pause animation on hover */
+        .slider-container:hover .slider-track {
+            animation-play-state: paused;
+        }
+
+
+        /* --- GEMINI API SECTIONS --- */
+        .api-section {
+            padding: 6rem 1.5rem;
+            max-width: 1100px;
+            margin: 4rem auto;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Custom scrollbar for results */
+        .results-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .results-box::-webkit-scrollbar-track {
+            background: #2d3748;
+            /* dark-700 */
+            border-radius: 10px;
+        }
+
+        .results-box::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            /* dark-500 */
+            border-radius: 10px;
+        }
+
+        .results-box::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+            /* dark-400 */
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 25px 30px;
+            }
+
+            .hero {
+                padding-top: 150px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        /*
+============================================================
+=== VOICE APP STYLES ===
+============================================================
+*/
+
+#voice-app-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    color:rgba(0, 0, 0, 0.7);
+}
+
+#voice-app-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color:rgba(0, 0, 0, 0.7);
+}
+
+#recordButton {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #050d58;
+    color: white;
+font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+#recordButton:hover {
+    background-color: #0056b3;
+}
+
+#recordButton.is-listening {
+    background-color: #dc3545;
+    box-shadow: 0 0 20px 10px rgba(220, 53, 69, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+#status {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    min-height: 2em;
+    text-align: center;
+    padding: 0 20px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#back-to-home-btn {
+    margin-top: 2rem;
+    font-size: 1rem;
+color: #3b82f6; /* text-blue-500 */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#back-to-home-btn:hover {
+    color: #60a5fa; /* text-blue-400 */
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1);}
+}

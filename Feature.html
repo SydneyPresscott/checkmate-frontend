@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Mate - Features</title>
+    
+    <!-- 1. Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- 2. Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- 3. Embedded CSS to match your style.css -->
+    <style>
+        /* ===== 1. RESET & GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC; /* Light gray background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Slightly smaller for a content page */
+            margin: 0 auto;
+            padding: 0 2rem; /* 32px padding */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1.25rem; /* 8px 20px */
+            border: none;
+            border-radius: 0.5rem; /* 8px */
+            font-weight: 600;
+            font-size: 1rem; /* 16px */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            background-color: #4A4EFC;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn:hover {
+            background-color: #3B3EEA;
+            transform: translateY(-2px);
+        }
+        .btn i {
+            margin-right: 0.5rem; /* 8px */
+        }
+
+        /* ===== 2. HEADER ===== */
+        .header-blue {
+            background-color: #0E172B;
+            color: white;
+            padding: 1.5rem 0;  /* 24px */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 700;
+        }
+
+        /* ===== 3. MAIN CONTENT ===== */
+        main.container {
+            flex-grow: 1;
+            padding-top: 2.5rem; /* 40px */
+            padding-bottom: 4rem; /* 64px */
+        }
+
+        .page-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 800;
+            color: #1F2937; /* gray-800 */
+            margin-bottom: 2rem; /* 32px */
+            border-bottom: 2px solid #E5E7EB; /* gray-200 */
+            padding-bottom: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            gap: 1.5rem; /* 24px */
+        }
+
+        .feature-item {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* 12px */
+            border: 1px solid #E5E7EB; /* gray-200 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            overflow: hidden; /* To contain the border on .solves-box */
+        }
+        
+        .feature-content {
+             padding: 1.5rem; /* 24px */
+        }
+
+        .feature-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            color: #111827; /* gray-900 */
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-title i {
+            color: #4A4EFC; /* blue-600 */
+            margin-right: 0.75rem; /* 12px */
+            font-size: 1.25rem; /* 20px */
+        }
+
+        .feature-description {
+            font-size: 1rem; /* 16px */
+            color: #4B5563; /* gray-600 */
+            line-height: 1.6;
+            margin-top: 0.75rem; /* 12px */
+            padding-left: 2.25rem; /* Aligns with title text */
+        }
+
+        .solves-box {
+            background-color: #F8FAFC; /* gray-50 */
+            margin-top: 1.25rem; /* 20px */
+            padding: 1rem 1.5rem; /* 16px 24px */
+            border-top: 1px solid #E5E7EB; /* gray-200 */
+            font-size: 0.95rem;
+        }
+        
+        .solves-box strong {
+            color: #166534; /* green-800 */
+            font-weight: 600;
+        }
+        
+        .solves-box span {
+            color: #374151; /* gray-700 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-blue">
+        <nav class="navbar">
+            <h1 class="logo">CHECKMATE - Features</h1>
+            <!-- Back button to return to the main app -->
+            <a href="index.html" class="btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to App
+            </a>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN FEATURES SECTION ===== -->
+    <main class="container">
+        
+        <h1 class="page-title">Application Features</h1>
+
+        <ul class="features-list">
+            
+            <!-- Feature 1 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-microphone-alt"></i>
+                        <span>Hands-Free Stock Updates</span>
+                    </h2>
+                    <p class="feature-description">
+                        The core feature. Allows shopkeepers to add or remove inventory using voice commands while they are multitasking.
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Eliminates manual data entry and saves time.</span>
+                </div>
+            </li>
+
+            <!-- Feature 2 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-search"></i>
+                        <span>Instant Stock Checks</span>
+                    </h2>
+                    <p class="feature-description">
+                        Lets the user ask, "How many apples are in stock?" and get an immediate voice reply.
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Prevents lost sales by giving real-time data without stopping work.</span>
+                </div>
+            </li>
+
+            <!-- Feature 3 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>The "Safety Check"</span>
+                    </h2>
+                    <p class="feature-description">
+                        This is our error-prevention feature. The system repeats every number back (e.g., "Got it. Added *thirteen* cokes. You now have 43.")
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Ensures accuracy even in a noisy shop environment.</span>
+                </div>
+            </li>
+
+            <!-- Feature 4 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>"Waste Alert" (FIFO Logic)</span>
+                    </h2>
+                    <p class="feature-description">
+                        A proactive alert that flags items nearing their expiry date, based on the dates in our SQLite database.
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Directly reduces inventory waste and saves the owner money.</span>
+                </div>
+            </li>
+
+            <!-- Feature 5 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Low-Stock Reorder Alerts</span>
+                    </h2>
+                    <p class="feature-description">
+                        Automatically notifies the user when an item's quantity falls below its preset reorder point.
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Prevents stock-outs and automates the supply chain.</span>
+                </div>
+            </li>
+
+            <!-- Feature 6 -->
+            <li class="feature-item">
+                <div class="feature-content">
+                    <h2 class="feature-title">
+                        <i class="fas fa-globe-americas"></i>
+                        <span>Core AI & Multilingual Support</span>
+                    </h2>
+                    <p class="feature-description">
+                        We use the Agora AI Engine to understand the user's intent (not just words) and to process multiple languages.
+                    </p>
+                </div>
+                <div class="solves-box">
+                    <strong>Solves:</strong> <span>Makes the tool accessible to diverse staff and provides the clean JSON data our backend needs.</span>
+                </div>
+            </li>
+
+        </ul>
+    </main>
+
+</body>
+</html>

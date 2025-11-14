@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Mate - Billing</title>
+    
+    <!-- 1. Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- 2. Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- 3. Embedded CSS to match your style.css -->
+    <style>
+        /* ===== 1. RESET & GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC; /* Light gray background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem; /* 32px padding */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1.25rem; /* 8px 20px */
+            border: none;
+            border-radius: 0.5rem; /* 8px */
+            font-weight: 600;
+            font-size: 1rem; /* 16px */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            background-color: #4A4EFC;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn:hover {
+            background-color: #3B3EEA;
+            transform: translateY(-2px);
+        }
+        .btn i {
+            margin-right: 0.5rem; /* 8px */
+        }
+
+        /* ===== 2. HEADER ===== */
+        .header-blue {
+            background-color: #0E172B;
+            color: white;
+            padding: 1.5rem 0;  /* 24px */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 700;
+        }
+
+        /* ===== 3. MAIN CONTENT ===== */
+        main.container {
+            flex-grow: 1;
+            padding-top: 2.5rem; /* 40px */
+            padding-bottom: 4rem; /* 64px */
+            
+            /* Center the billing container */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 800;
+            color: #1F2937; /* gray-800 */
+            margin-bottom: 2rem; /* 32px */
+        }
+        
+        /* ===== 4. BILLING CONTAINER STYLES ===== */
+        /* This replaces the inline styles from your code */
+        .billing-container {
+            max-width: 450px;
+            width: 100%;
+            margin: auto;
+            padding: 2rem; /* 32px */
+            border: 1px solid #E5E7EB; /* gray-200 */
+            border-radius: 0.75rem; /* 12px */
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .billing-container h2 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: 700;
+            color: #111827; /* gray-900 */
+            margin-bottom: 1.5rem; /* 24px */
+            text-align: center;
+        }
+        
+        .billing-container label {
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            color: #4B5563; /* gray-600 */
+            display: block;
+            margin-top: 1rem;
+        }
+        
+        /* Modern form styles */
+        .billing-container select,
+        .billing-container input[type="number"] {
+            width: 100%;
+            padding: 0.75rem; /* 12px */
+            margin: 0.5rem 0;
+            border: 1px solid #D1D5DB; /* gray-300 */
+            border-radius: 0.5rem; /* 8px */
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .billing-container select:focus,
+        .billing-container input[type="number"]:focus {
+            outline: none;
+            border-color: #4A4EFC;
+            box-shadow: 0 0 0 3px rgba(74, 78, 252, 0.2);
+        }
+        
+        .billing-container button {
+            width: 100%;
+            padding: 0.85rem; /* 14px */
+            margin-top: 1.5rem; /* 24px */
+            background: #3a86ff;
+            color: white;
+            border: none;
+            border-radius: 0.5rem; /* 8px */
+            font-size: 1rem; /* 16px */
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .billing-container button:hover {
+            background: #2c75e9;
+        }
+        
+        #bill-result {
+            margin-top: 1.5rem; /* 24px */
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-blue">
+        <nav class="navbar">
+            <h1 class="logo">CHECKMATE - Billing</h1>
+            <!-- Back button to return to the main app -->
+            <a href="index.html" class="btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to App
+            </a>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN BILLING SECTION ===== -->
+    <main class="container">
+        
+        <h1 class="page-title">Simulated Billing</h1>
+
+        <!-- This is your billing code, with inline styles removed -->
+        <div class="billing-container">
+            <h2>🧾 Point of Sale</h2>
+
+            <!-- Product Select -->
+            <label for="bill-product">Product</label>
+            <select id="bill-product">
+                <option value="Pepsi">Pepsi (Stock: 20)</option>
+                <option value="Milk">Milk (Stock: 12)</option>
+                <option value="Sugar">Sugar (Stock: 50)</option>
+            </select>
+
+            <!-- Quantity Input -->
+            <label for="bill-qty">Quantity</label>
+            <input id="bill-qty" type="number" min="1" />
+
+            <!-- Bill Button -->
+            <button onclick="simulateBilling()">
+                Generate Bill
+            </button>
+
+            <p id="bill-result"></p>
+        </div>
+
+    </main>
+
+    <!-- This is your exact JavaScript logic, unchanged -->
+    <script>
+        // Mock inventory for demo (replace with API later)
+        let inventory = {
+            "Pepsi": 20,
+            "Milk": 12,
+            "Sugar": 50
+        };
+
+        // Digit-by-digit spell-out
+        function digitSpell(num) {
+            const map = {
+                "0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
+                "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine"
+            };
+            return num.toString().split("").map(d => map[d]).join("-");
+        }
+
+        function simulateBilling() {
+            let product = document.getElementById("bill-product").value;
+            let quantity = document.getElementById("bill-qty").value;
+            let resultBox = document.getElementById("bill-result");
+
+            if (!quantity || quantity <= 0) {
+                resultBox.innerHTML = "❌ Please enter a valid quantity.";
+                resultBox.style.color = "#DC2626"; // red-600
+                return;
+            }
+
+            quantity = parseInt(quantity);
+
+            // Check stock
+            if (inventory[product] < quantity) {
+                resultBox.innerHTML = `❌ Not enough stock. Available: ${inventory[product]}`;
+                resultBox.style.color = "#DC2626"; // red-600
+                return;
+            }
+
+            // Spell out digits
+            const spelled = digitSpell(String(quantity));
+
+            // Confirmation message
+            resultBox.innerHTML = `✔ Confirming sale of <b>${spelled}</b> ${product}.<br>Processing...`;
+            resultBox.style.color = "#374151"; // gray-700
+
+            // Simulate update
+            setTimeout(() => {
+                inventory[product] -= quantity;
+
+                resultBox.innerHTML = `
+                    ✔ Sale completed!<br>
+                    ${product} remaining stock: <b>${inventory[product]}</b>
+                `;
+                resultBox.style.color = "#166534"; // green-800
+
+                // TODO: Update the dropdown list to show new stock
+                // This is a good next step!
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
